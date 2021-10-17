@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+bool Palindrom(int x) {
+	int num = 0;
+	int t = x;
+	while (t > 0) {
+		num += t % 10;
+		num *= 10;
+		t /= 10;
+	}
+	num /= 10;
+	return num == x;
+}
+
+//функция преобразования числа из десятичной системы в двоичную
+int To2(int x) {
+	int num = 0;
+	int n1 = x;
+	while (n1 >= 0) {
+		num += n1 % 2;
+		num *= 10;
+		n1 /= 10;
+	}
+	num /= 10;
+	cout << num;
+}
+
+int main() {
+	int n, m;
+	cout << "Enter a value of number: ";
+	cin >> n;
+	cout << "Enter system of number(2, 10, 16): ";
+	cin >> m;
+	switch (m) {
+	case 2: {
+		n = To2(n);
+		Palindrom(n) ? cout << n << "is palindrom number." :
+				   cout << n << " is NOT palindrom number.";
+		break;
+	}
+	case 10:
+		Palindrom(n) ? cout << n << " is palindrom number." :
+			           cout << n << " is NOT palindrom number.";
+		break;
+	case 16:
+		break;
+	}
+
+	return 0;
+}
